@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+    
+<!--
+    
+    app
+    v-bind tells, hey don't use the normal attribute here, dont use it like a normal html attribute, instead bind it
+                - bind smth to my data, which i stored in the VueJs instance
+                - takes an argument :href in this case (its the attribute)
+dsirective - instruction u place in ur code, this instructi    
+    all usages of "title" get re-rendered once the property changes!!
+    by default vuejs doesn't render html elements, only renders text
+    v-html = render html code, dont escape it
+-->
+<body>
+<!--
+    <div id="app">
+        <h1 v-once>{{ title }}</h1>
+        <p>{{ sayHello()}} - <a v-bind:href="link">Google</a></p>
+        <hr>
+        <p v-html="finishedLink"></p>
+    </div>
+-->
+    <div id="app2">
+        <button v-on:click="increment(4, $event)">Click me</button>
+        <button v-on:click="reset">Reset</button>
+        <p>{{ counter }}</p>
+        <p v-on:mousemove="updateCoordinates">Cooordinates: {{ x }} / {{ y }}
+            - <span v-on:mousemove="doNothing">DeadSpot</span>
+            - <span v-on:mousemove.stop>DeadSpot</span> 
+        </p>
+    
+    </div>
+    
+    
+    
+    
+<script>
+    
+/*vue js creates a template based on our html code, stores that internally and then uses this template to create real html , which then is rendered by the DOM*/
+   /* var app = new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello World',
+            link: 'http://www.google.com',
+            finishedLink: '<a href="http://google.com">Google</a>'
+      },
+        methods: {
+            sayHello: function() { 
+                this.title = 'hello'
+                return this.title;
+            }
+        }
+})*/
+    
+    var app2 = new Vue({
+        el: '#app2',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            increment: function(amount,event) {
+                //console.log(event);
+                this.counter+= amount;
+            },
+            reset: function(){
+                this.counter=0;
+            },
+            updateCoordinates: function(e) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            doNothing: function(e) {
+                event.stopPropagation();
+            }
+        }
+    })
+    
+</script>
+</body>
+</html>
