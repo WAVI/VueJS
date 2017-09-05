@@ -44,15 +44,21 @@ dsirective - instruction u place in ur code, this instructi
         <input type="text" v-model="name">
         <p>{{ name }}</p>
     </div>    -->
-    
-    <div id="app4">
+<!--<div id="app4">
         <button v-on:click="counter++">Increase</button>
         <button v-on:click="counter--">Decrease</button>
         <button v-on:click="secondCounter++">Increase Second</button>
         <p>Counter: {{ counter }} || {{ secondCounter }}</p>
         <p>Result : {{ result()  }} | {{ output }}</p>
     </div>
+-->
     
+<!--    v-on:click or @click-->
+<!--    v-bind:href or :href-->
+    <div id="app5">
+        <button @click="changeLink">Click to Change Link</button>
+        <a :href="link">Link</a>
+    </div>
     
     
 <script>
@@ -108,8 +114,7 @@ dsirective - instruction u place in ur code, this instructi
             
         }
     })*/
-    
-    var app4 = new Vue({
+/*    var app4 = new Vue({
         el: '#app4',
         data: {
             counter: 0,
@@ -139,7 +144,20 @@ dsirective - instruction u place in ur code, this instructi
                 return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
             }
         }
+    })*/
+    
+    var app5 = new Vue({
+        el: "#app5",
+        data: {
+            link: 'http://google.com'
+        },
+        methods: {
+            changeLink: function() {
+                this.link = 'http://apple.com'
+            }
+        }
     })
+    
 </script>
 </body>
 </html>
