@@ -26,7 +26,7 @@ dsirective - instruction u place in ur code, this instructi
         <p v-html="finishedLink"></p>
     </div>
 -->
-    <div id="app2">
+<!--    <div id="app2">
         <button v-on:click="increment(4, $event)">Click me</button>
         <button v-on:click="counter++">Click me</button>
         <button v-on:click="reset">Reset</button>
@@ -38,15 +38,27 @@ dsirective - instruction u place in ur code, this instructi
         </p>
         <input type="text" v-on:keyup.enter.space="alertMe">
     
-    </div>
+    </div>-->
+<!--    v-model = setup two way binding for this input here, and between " " , the property we want to bind directly
+    <div id="app3">
+        <input type="text" v-model="name">
+        <p>{{ name }}</p>
+    </div>    -->
     
+    <div id="app4">
+        <button v-on:click="counter++">Increase</button>
+        <button v-on:click="counter--">Decrease</button>
+        <button v-on:click="secondCounter++">Increase Second</button>
+        <p>Counter: {{ counter }} || {{ secondCounter }}</p>
+        <p>Result : {{ result()  }} | {{ output }}</p>
+    </div>
     
     
     
 <script>
     
 /*vue js creates a template based on our html code, stores that internally and then uses this template to create real html , which then is rendered by the DOM*/
-   /* var app = new Vue({
+/* var app = new Vue({
         el: '#app',
         data: {
             title: 'Hello World',
@@ -60,8 +72,7 @@ dsirective - instruction u place in ur code, this instructi
             }
         }
 })*/
-    
-    var app2 = new Vue({
+/*var app2 = new Vue({
         el: '#app2',
         data: {
             counter: 0,
@@ -87,8 +98,36 @@ dsirective - instruction u place in ur code, this instructi
             }
             
         }
-    })
+    })*/
+/*var app3 = new Vue({
+        el: '#app3',
+        data: {
+            name: "Iustin"
+        },
+        methods: {
+            
+        }
+    })*/
     
+    var app4 = new Vue({
+        el: '#app4',
+        data: {
+            counter: 0,
+            secondCounter: 0
+        },
+        computed: {
+          output: function() {
+              console.log('Computed');
+              return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+          }  
+        },
+        methods: {
+            result: function() {
+                console.log('Method');
+                return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
+            }
+        }
+    })
 </script>
 </body>
 </html>
