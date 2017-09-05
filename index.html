@@ -67,17 +67,17 @@ dsirective - instruction u place in ur code, this instructi
         },
         methods: {
             increment: function(amount,event) {
-                //console.log(event);
+                console.log(event);
                 this.counter+= amount;
             },
             reset: function(){
                 this.counter=0;
             },
-            updateCoordinates: function(e) {
+            updateCoordinates: function(event) {
                 this.x = event.clientX;
                 this.y = event.clientY;
             },
-            doNothing: function(e) {
+            doNothing: function(event) {
                 event.stopPropagation();
             }
         }
