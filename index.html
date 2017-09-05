@@ -34,6 +34,7 @@ dsirective - instruction u place in ur code, this instructi
             - <span v-on:mousemove="doNothing">DeadSpot</span>
             - <span v-on:mousemove.stop>DeadSpot</span> 
         </p>
+        <input type="text" v-on:keyup.enter.space="alertMe">
     
     </div>
     
@@ -79,7 +80,11 @@ dsirective - instruction u place in ur code, this instructi
             },
             doNothing: function(event) {
                 event.stopPropagation();
+            },
+            alertMe: function() {
+                alert('Alert');
             }
+            
         }
     })
     
