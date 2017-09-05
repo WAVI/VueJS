@@ -115,15 +115,27 @@ dsirective - instruction u place in ur code, this instructi
             counter: 0,
             secondCounter: 0
         },
+        //computed = dependent properties
+        //computed properties runs with sync, when something happens, it should execute
         computed: {
           output: function() {
               console.log('Computed');
               return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
           }  
         },
+        //watch: execute code upon data changes
+        watch:{
+            //it has to match one of my properties(counter in this case)
+            counter: function(value) {
+                var vm = this;
+                setTimeout( () => {
+                    vm.counter = 0;
+                }, 2000);
+            }
+        },
         methods: {
             result: function() {
-                console.log('Method');
+                console.log('Method1');
                 return this.counter > 5 ? 'Greater 5' : 'Smaller 5';
             }
         }
