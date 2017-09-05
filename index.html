@@ -28,8 +28,10 @@ dsirective - instruction u place in ur code, this instructi
 -->
     <div id="app2">
         <button v-on:click="increment(4, $event)">Click me</button>
+        <button v-on:click="counter++">Click me</button>
         <button v-on:click="reset">Reset</button>
         <p>{{ counter }}</p>
+        <p>{{ counter*2 > 10 ? 'Greater than 10' : 'Smaller than 10' }}</p>
         <p v-on:mousemove="updateCoordinates">Cooordinates: {{ x }} / {{ y }}
             - <span v-on:mousemove="doNothing">DeadSpot</span>
             - <span v-on:mousemove.stop>DeadSpot</span> 
@@ -68,7 +70,6 @@ dsirective - instruction u place in ur code, this instructi
         },
         methods: {
             increment: function(amount,event) {
-                console.log(event);
                 this.counter+= amount;
             },
             reset: function(){
