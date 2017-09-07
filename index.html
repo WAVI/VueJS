@@ -83,6 +83,44 @@ dsirective - instruction u place in ur code, this instructi
         <input type="text" v-model="width">
     </div>
 -->
+<!--
+    v-else will automatically reffer to the latest v-if in front of it
+    the condition applies to all the nested elements like the span we have added
+    v-show its not detaching if u inspect the code. It gets a style="display:none" (so if u dont want to detach it, use v-show)
+    <div id="app8">
+        <p v-if="show">You can see me !
+            <span>Hello</span>
+        </p>
+        <p v-else=>now you see me</p>
+        <template v-if="show">
+            <h1>heading</h1>
+            <p>Inside a template</p>
+        </template>
+        <p v-show="show">Do you also see me?</p>
+        <button @click="show = !show">Switch</button>
+    </div>
+-->
+    
+<!--    (value, key) order is important. The first one is the value of the property, the second one(key) will be the name of the property)
+        (value, key, index ) thats how we write if we want to get the number of the iteration-->
+    
+    <div id="app9">
+        <ul>
+            <li v-for="(ing,index) in ingredients">{{ing}} ({{ index+1 }})</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="pers in persons">
+                <div v-for="(value, key, index) in pers">{{key}}:{{value}},{{index}}</div>
+            </li>
+        </ul>
+        <hr>
+        <template v-for="(ing,index) in ingredients" >
+        <h1>{{ing}}</h1>
+        <p>{{index}}</p>
+        </template>
+    </div>
+    
 <script>
     
 /*vue js creates a template based on our html code, stores that internally and then uses this template to create real html , which then is rendered by the DOM*/
@@ -210,6 +248,24 @@ dsirective - instruction u place in ur code, this instructi
         }
     })
     */
+/*
+    var app8 = new Vue({
+        el: "#app8",
+        data: {
+            show: true
+        }
+    });*/
+    
+    var app9 = new Vue({
+        el: "#app9",
+        data: {
+            ingredients: ['meat', 'fruit', 'cookies'],
+            persons: [
+                {name: 'Max', age: 27, color: 'red'},
+                {name: 'Anna', age: 'unknown', color: 'blue'}
+            ]
+        }
+    })
 </script>
 </body>
 </html>
