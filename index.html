@@ -52,15 +52,37 @@ dsirective - instruction u place in ur code, this instructi
         <p>Result : {{ result()  }} | {{ output }}</p>
     </div>
 -->
-    
-<!--    v-on:click or @click-->
-<!--    v-bind:href or :href-->
+<!--    v-on:click or @click
+    v-bind:href or :href
     <div id="app5">
         <button @click="changeLink">Click to Change Link</button>
         <a :href="link">Link</a>
     </div>
+    -->
+<!--
+    :class its VueJs syntax, and it expects an object(this object should be (css class, true/false))
+    <div id="app6">
+        <div 
+             class="demo" 
+             @click="attachRed = !attachRed"
+        :class="divClasses"></div>
+        <div class="demo" :class="{red: attachRed}"></div>
+        <div class="demo" :class="[color, {red: attachRed} ]"></div>
+        <hr>
+        <input type="text" v-model="color">
+    </div>
     
-    
+-->
+<!--
+    <div id="app7">
+        <div class="demo" :style="{'background-color':color}"></div>
+        <div class="demo" :style="myStyle"></div>
+        <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
+        <hr>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+    </div>
+-->
 <script>
     
 /*vue js creates a template based on our html code, stores that internally and then uses this template to create real html , which then is rendered by the DOM*/
@@ -145,7 +167,7 @@ dsirective - instruction u place in ur code, this instructi
             }
         }
     })*/
-    
+/*    
     var app5 = new Vue({
         el: "#app5",
         data: {
@@ -156,8 +178,38 @@ dsirective - instruction u place in ur code, this instructi
                 this.link = 'http://apple.com'
             }
         }
+    })*/
+/*    var app6 = new Vue({
+        el: '#app6',
+        data: {
+          attachRed: false,
+          color: 'green'
+        },
+        computed: {
+            divClasses: function() {
+                return {
+                  red: this.attachRed,
+                  blue: !this.attachRed
+                };
+            }
+        }
+    }) */
+/* var app7 = new Vue({
+        el: "#app7",
+        data: {
+            color: 'gray',
+            width: 100
+        },
+        computed: {
+            myStyle: function() {
+                return {
+                  backgroundColor: this.color,
+                    width: this.width+ 'px'
+                };
+            }
+        }
     })
-    
+    */
 </script>
 </body>
 </html>
