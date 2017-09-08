@@ -100,20 +100,23 @@ dsirective - instruction u place in ur code, this instructi
         <button @click="show = !show">Switch</button>
     </div>
 -->
-    
-<!--    (value, key) order is important. The first one is the value of the property, the second one(key) will be the name of the property)
-        (value, key, index ) thats how we write if we want to get the number of the iteration-->
+<!--
+    (value, key) order is important. The first one is the value of the property, the second one(key) will be the name of the property)
+        (value, key, index ) thats how we write if we want to get the number of the iteration
+    if sometimes an element in the array updates where you dont expect to do, use the v-bind:key= "" or shortcut :key
     
     <div id="app9">
         <ul>
-            <li v-for="(ing,index) in ingredients">{{ing}} ({{ index+1 }})</li>
+            <li v-for="(ing,index) in ingredients" :key="ing">{{ing}} ({{ index+1 }})</li>
         </ul>
+        <button @click="ingredients.push('spices')">Add new</button>
         <hr>
         <ul>
             <li v-for="pers in persons">
                 <div v-for="(value, key, index) in pers">{{key}}:{{value}},{{index}}</div>
             </li>
         </ul>
+        <span v-for="n in 10">{{n}}</span>
         <hr>
         <template v-for="(ing,index) in ingredients" >
         <h1>{{ing}}</h1>
@@ -121,6 +124,7 @@ dsirective - instruction u place in ur code, this instructi
         </template>
     </div>
     
+-->
 <script>
     
 /*vue js creates a template based on our html code, stores that internally and then uses this template to create real html , which then is rendered by the DOM*/
@@ -255,7 +259,7 @@ dsirective - instruction u place in ur code, this instructi
             show: true
         }
     });*/
-    
+/*    
     var app9 = new Vue({
         el: "#app9",
         data: {
@@ -265,7 +269,7 @@ dsirective - instruction u place in ur code, this instructi
                 {name: 'Anna', age: 'unknown', color: 'blue'}
             ]
         }
-    })
+    })*/
 </script>
 </body>
 </html>
