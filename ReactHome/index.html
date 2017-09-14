@@ -3,68 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <title>React tutorial</title>
+    <script src="https://unpkg.com/recharts/dist/Recharts.js"></script>
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
   </head>
     
   <body>
     <div id="app">
 
     </div>
+
     <script type="text/babel">
+  
+const data = [
+      {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
+      {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
+      {name: 'Page C', uv: 2000, pv: 9800, amt: 2290},
+      {name: 'Page D', uv: 2780, pv: 3908, amt: 2000},
+      {name: 'Page E', uv: 1890, pv: 4800, amt: 2181},
+      {name: 'Page F', uv: 2390, pv: 3800, amt: 2500},
+      {name: 'Page G', uv: 3490, pv: 4300, amt: 2100},
+];
+const SimpleLineChart = React.createClass({
+	render () {
+  	return (
+    	<LineChart width={600} height={300} data={data}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+       <XAxis dataKey="name"/>
+       <YAxis/>
+       <CartesianGrid strokeDasharray="3 3"/>
+       <Tooltip/>
+       <Legend />
+       <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{r: 8}}/>
+       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+      </LineChart>
+    );
+  }
+})
 
-    class App extends React.Component {
+ReactDOM.render(
+  <SimpleLineChart />,
+  document.getElementById('app')
+);
+    	
+
+
+
+
+
+
+
+
+
+
+
+
+ /*   class App extends React.Component {
+
       
+      websocket = null;
+
       constructor(props){
-
         super(props);
-        this.state = {
-          data: []
+        this.state={
+          dataSent: null,
+          dataReceived: null,
+          messages: []
         };
-        this.handleClick = this.handleClick.bind(this);
-      }
-      
-      componentWillMount(){
-        fetch('https://facebook.github.io/react-native/movies.json')
-        .then( 
-          (response) => response.json() 
-        ) 
-        .then( 
-          (responseJson) => {
-            var a = responseJson;
-            var b = responseJson.movies;
-            this.setState({
-              data: b.slice()
-            })
 
-            b.map( (item) => console.log(item));
-          }
-        )
-        .catch(
-           (error) => {
-          console.error(error);
-        });
       }
 
-      handleClick(){
-        alert('IT WORKED');
-       
+      componentWillMount() {
+        this.websocket = new EventSource("http://10.42.82.92:5000", {withCredentials: true});
+
+        this.websocket.addEventListener('open', (e)=> {
+          console.log(e, arguments);
+        })
+
+        this.websocket.onmessage= (e) =>{
+          this.setState({
+            messages: [
+              e.data,
+              ...this.state.messages.slice(0, 9)
+            ]
+          });
+
+
+
+          console.log(e, arguments)
+        }
+
+        this.websocket.onerror = (e) => {
+          console.log(e, arguments)
+        }
+      }
+
+      componentWillUnmount(){
+        this.websocket.close();
       }
 
       render() {
-        
 
           return(
             <div>
-            <button onClick={this.handleClick}>Get json from URL</button>
-            {this.state.data && <p>{this.state.data}</p>}
+              <ol>
+                {this.state.messages.map(
+                  (item, i) =>
+                    <li key={i}>
+                      <code>{item}</code>
+                    </li>
+                )}
+              </ol>
             </div>
           ); 
         }
       }
 
+
+
+      class AppCharts extends React.Component {
+        constructor(props){
+          super(props);
+        }
+
+        render(){
+          return (
+            <div>
+
+            </div>
+          )
+        }
+      }
+
     ReactDOM.render(<App/>, document.getElementById('app'));
+    */
+
     </script>
   </body>
 </html>
