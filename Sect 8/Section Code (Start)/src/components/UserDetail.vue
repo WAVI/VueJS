@@ -3,6 +3,7 @@
         <h3>You may view the User Details here</h3>
         <p>Many Details</p>
         <p>User Name: {{ switchName() }}</p>
+        <p>User Age: {{ userAge }}</p>
         <button @click="resetName">Reset name</button>
         <button @click="resetFunc">Reset func</button>
         <button @click="resetDef()">Reset default</button>
@@ -12,6 +13,9 @@
 </template>
 
 <script>
+
+import { EventBus } from '../main';
+
 
     export default {
         // props: ['name'],
@@ -31,7 +35,8 @@
 
             resetDef: {
                 type: Function
-            }
+            },
+            userAge: Number
         },
         methods: {
             switchName() {
@@ -50,10 +55,15 @@
             },
             resetFunc() {
                 this.resetFunction("xx");
+            },
+        },
+        created() {
+                //this will listen to events emitted on the eventBus instance
+                //arguments: name of the event and callback (which will receive the data we passed to the event)
+                EventBus.$on('ageWasEdited', (data) => {
+                     this.userAge = data;
+                });
             }
-
-
-        }
     }
 
 </script>

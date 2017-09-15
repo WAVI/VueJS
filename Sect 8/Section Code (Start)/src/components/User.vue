@@ -12,11 +12,15 @@
                  v-bind:name="name"
                   v-bind:resetFunction="onNameReset"
                   :resetDef="resetDefault"
-                   @nameWasReset="name = $event">
+                   @nameWasReset="name = $event"
+                   :userAge="age">
                 </app-user-detail>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <app-user-edit></app-user-edit>
+                <app-user-edit 
+                :userAge="age"
+                @ageWasEdited="age = $event"
+                ></app-user-edit>
             </div>
         </div>
     </div>
@@ -30,7 +34,8 @@
     export default {
         data: function() {
             return {
-                name: 'Iustin'
+                name: 'Iustin',
+                age:27
             }
         },
         methods: {
