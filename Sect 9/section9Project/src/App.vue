@@ -16,6 +16,7 @@
                 <p>Default Content</p>
               </component>
               </keep-alive>
+              
               <!-- <appQuote > 
                    if we style these 2, we will style them in the child component
                  <h2 slot="title">{{ quoteTitle }}</h2>
