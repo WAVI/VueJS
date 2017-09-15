@@ -19,7 +19,8 @@ export default {
             // this.$emit('ageWasEdited', this.userAge);
 
             //this is not emited on this vue instace, its emitted on this eventBus instance
-            EventBus.$emit('ageWasEdited', this.userAge);
+         //   EventBus.$emit('ageWasEdited', this.userAge);
+         EventBus.changeAge(this.userAge);
         }
     }
 }
