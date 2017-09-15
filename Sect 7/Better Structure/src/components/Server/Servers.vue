@@ -11,7 +11,12 @@
 </template>
 
 <script>
+
+//any style that we apply to a component will be applied globally 
+
 </script>
+
+
 
 <style scoped>
     div {

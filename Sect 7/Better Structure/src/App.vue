@@ -19,6 +19,8 @@
 
     export default {
         components: {
+            //if we don't use  dash we can write without ''
+            //if we declare appHeader and we use app-header, it will work since Vue.js gives us access to this version of it
             appHeader: Header,
             Servers,
             'app-server-details': ServerDetails,
